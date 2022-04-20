@@ -9,7 +9,9 @@ data class ToDo(
     @ColumnInfo(name = "title")
     var title: String,
     @ColumnInfo(name = "notes")
-    var notes: String
+    var notes: String,
+    @ColumnInfo(name = "priority")
+    var priority: Int
 ){
     @PrimaryKey(autoGenerate = true)
     var uuid: Int=0

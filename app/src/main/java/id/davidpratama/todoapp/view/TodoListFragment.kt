@@ -7,6 +7,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.Navigation
@@ -18,8 +19,15 @@ import kotlinx.android.synthetic.main.fragment_todo_list.*
 class TodoListFragment : Fragment() {
     private lateinit var viewModel: ListToDoViewModel
     private var toDoListAdapter : ToDoListAdapter = ToDoListAdapter(arrayListOf(),
-        {item -> viewModel.clearTask(item)})
-
+        { item ->
+//            viewModel.clearTask(item)
+        if(item.is_done==0){
+            viewModel.updateTask(item.uuid)
+            Toast.makeText(view?.context,"Todo berhasil",Toast.LENGTH_SHORT).show()
+            observeViewModel()
+        }
+        }
+    )
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?

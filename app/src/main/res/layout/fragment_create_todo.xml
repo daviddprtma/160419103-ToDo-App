@@ -6,6 +6,9 @@
         <variable name="listener" type="id.davidpratama.todoapp.view.ButtonAddToDoClickListener" />
         <variable name="todo" type="id.davidpratama.todoapp.model.ToDo" />
         <variable name="radioListener" type="id.davidpratama.todoapp.view.RadioClickListener" />
+        <variable name="listener_date" type="id.davidpratama.todoapp.view.DateClickListener" />
+        <variable name="listener_time" type="id.davidpratama.todoapp.view.TimeClickListener" />
+
     </data>
 <FrameLayout
     android:layout_width="match_parent"
@@ -46,10 +49,10 @@
 
                 <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/txtTitle"
+                    android:text="@={todo.title}"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:hint="ToDo Title"
-                    android:text="@{todo.title}"
                     tools:ignore="TouchTargetSizeCheck" />
             </com.google.android.material.textfield.TextInputLayout>
 
@@ -67,10 +70,10 @@
 
                 <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/txtNotes"
+                    android:text="@={todo.notes}"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:hint="Enter Notes"
-                    android:text="@{todo.notes}"
                     tools:ignore="TouchTargetSizeCheck" />
             </com.google.android.material.textfield.TextInputLayout>
 
@@ -151,9 +154,11 @@
                 app:layout_constraintTop_toBottomOf="@+id/radiogroupPriority">
 
                 <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/txtDate"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:hint="Pick a Date" />
+                    android:hint="Pick a Date"
+                    android:onClick="@{listener_date::onDateClick}" />
             </com.google.android.material.textfield.TextInputLayout>
 
             <com.google.android.material.textfield.TextInputLayout
@@ -172,9 +177,11 @@
                 app:layout_constraintTop_toBottomOf="@+id/textInputLayout3">
 
                 <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/txtTime"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:hint="Pick a time" />
+                    android:hint="Pick a time"
+                    android:onClick="@{listener_time::onTimeClick}" />
             </com.google.android.material.textfield.TextInputLayout>
 
         </androidx.constraintlayout.widget.ConstraintLayout>
